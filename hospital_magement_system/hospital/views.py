@@ -15,20 +15,20 @@ def home_view(request):
     return render(request,'hospital/index.html')
 
 # showing login/signup button for admin
-def adminbutton_view(request):
+def adminclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render (request,'hospital/adminclick.html')
 
 # showing login/signup button for doctor
-def doctorbutton_view(request):
+def doctorclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'hospital/doctorclick.html')
 
 #showing login/signup button for patient
 
-def patientbutton_view(request):
+def patientclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'hospital/patientclick.html')
@@ -155,7 +155,7 @@ def admin_view_doctor_view(request):
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
-def delete_from_hospital_view(request,pk):
+def delete_doctor_from_hospital_view(request,pk):
     doctor = models.Doctor.objects.get(id=pk)
     user = models.User.objects.get(id = doctor.user_id)
     user.delete()
