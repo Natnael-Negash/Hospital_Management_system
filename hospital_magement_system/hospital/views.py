@@ -47,7 +47,7 @@ def admin_signup_view(request):
 
 def doctor_signup_view(request):
     userForm=forms.DoctorUserForm()
-    doctorForm=forms.DoctorFOrm()
+    doctorForm=forms.DoctorForm()
     mydict={'userForm': userForm,'doctorForm':doctorForm}
     if request.method=='POST':
         userForm=forms.DoctorUserForm(request.POST)
@@ -67,7 +67,7 @@ def doctor_signup_view(request):
 
 def patient_signup_view(request):
     userForm= forms.PatientUserForm()
-    patientForm= forms.Patientform()
+    patientForm= forms.PatientForm()
     mydict={'userForm':userForm,'patientForm':patientForm}
     if request.method == 'POST':
         userForm= forms.PatientUserForm(request.POST)
