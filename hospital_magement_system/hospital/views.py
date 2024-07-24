@@ -111,6 +111,10 @@ def afterlogin_view(request):
         else:
             return render(request,'hospital/patient_wait_for_approval.html')
         
+@login_required
+def profile_view(request):
+    # Your view logic here, such as fetching user data
+    return render(request, 'profile.html')
 
                     ##### admin related view start #####
 

@@ -22,6 +22,10 @@ from django.contrib.auth.views import LoginView,LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+urlpatterns += [
+    # other patterns
+    path('accounts/profile/', views.profile_view, name='profile'),
+]
 
 #FOR ADMIN RELATED URLS
 urlpatterns = [
