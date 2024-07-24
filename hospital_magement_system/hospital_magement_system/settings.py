@@ -1,8 +1,6 @@
 from pathlib import Path
-import django_heroku
-import dj_database_url
 from decouple import config
-
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +15,7 @@ SECRET_KEY = 'django-insecure-inqz(ozm2vx&#y6ifrq4gow*aosko5n*1y=9g(6c-n$g@+1x_(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hospital_magement_system.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,7 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'hospital_magement_system.urls'
@@ -74,7 +72,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+DATABASES["default"] = dj_database_url.parse("postgresql://hospital_management_system_necp_user:vlwDroUtzi86nMrHx6rchhdXlKaQ5CoJ@dpg-cqfsmh5ds78s73c519b0-a.oregon-postgres.render.com/hospital_management_system_necp")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -115,7 +113,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',  # Add your static directory here
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.compressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.compressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -123,4 +121,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.compressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-django_heroku.settings(locals())
